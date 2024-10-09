@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         btn_entrarmaps = findViewById(R.id.btn_entrarmaps);
-
+        ;
         btn_entrarmaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
