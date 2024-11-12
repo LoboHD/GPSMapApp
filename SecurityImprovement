@@ -1,0 +1,35 @@
+##Security Improvement
+
+
+### Revisión y Reducción de Permisos
+* Principio de Privilegios Mínimos: Solicita solo los permisos estrictamente necesarios y asegúrate de 
+revisar regularmente el archivo AndroidManifest.xml para eliminar permisos redundantes.
+* Solicitudes en Tiempo de Ejecución: Para permisos peligrosos (como los de ubicación), pídelos solo 
+cuando el usuario acceda a funciones que los requieren. Esto mejora la percepción de privacidad y minimiza
+el riesgo de abuso de permisos.
+### Implementación de Seguridad en Comunicaciones de Red
+* Usar HTTPS: Asegúrate de que todas las comunicaciones de red estén cifradas mediante HTTPS. Configura 
+también TLS 1.2 o superior para garantizar una conexión segura.
+* Certificado Pinning: Considera la implementación de "certificate pinning" para evitar ataques de 
+intermediarios (MITM). Esto permite que la app acepte solo certificados específicos y confiables.
+### Protección de Datos Sensibles
+* Cifrado Local: Cifra cualquier dato sensible almacenado en el dispositivo, como tokens de usuario o 
+credenciales, usando AES con una clave de al menos 256 bits.
+* Almacenamiento Seguro: Usa Android Keystore para gestionar y almacenar claves de cifrado. Esto ayuda a
+mantener las claves fuera del alcance de aplicaciones maliciosas.
+### Fortalecimiento de Autenticación
+* Implementar Autenticación de Dos Factores (2FA): Agrega soporte para 2FA, especialmente si la app maneja 
+datos sensibles. Esto puede ser mediante SMS, aplicaciones de autenticación o correo electrónico.
+* Protección de Sesión: Usa tokens de acceso de corta duración y refresca las sesiones de usuario 
+periódicamente. Implementa también la rotación de tokens en caso de detectar actividad sospechosa.
+### Mejorar la Seguridad del Código
+* Ofuscación de Código: Usa ProGuard o R8 para ofuscar el código, dificultando el acceso a los elementos 
+internos de la app y dificultando la ingeniería inversa.
+* Evitar Almacenamiento de Claves en el Código: No incluyas claves API, credenciales, ni secretos en el 
+código fuente. En lugar de esto, usa variables de entorno o un servidor seguro para almacenarlas.
+### Prevención de Ataques de Inyección
+* Validación de Entradas: Realiza una validación y saneamiento de todas las entradas del usuario. Esto 
+incluye escapar caracteres especiales y limitar el tipo de datos permitido en cada campo para evitar 
+inyecciones de código.
+* Uso de Parámetros en Consultas de Base de Datos: Siempre usa consultas parametrizadas al interactuar 
+con bases de datos para prevenir inyecciones SQL.
